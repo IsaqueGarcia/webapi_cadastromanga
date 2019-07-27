@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_MANGA")
@@ -17,10 +18,18 @@ public class Manga implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Size(max = 60)
 	private String nome;
+	
+	@Size(max = 60)
 	private String nomeAutor;
+	
+	@Size(max = 10)
 	private String capitulo;
-	private String desc;
+	
+	@Size(max = 255)
+	private String descricao;
+	
 	private Integer anoLancamento;
 	
 	
@@ -28,12 +37,12 @@ public class Manga implements Serializable {
 		
 	}
 	
-	public Manga(Long id, String nome, String nomeAutor, String capitulo, String desc, Integer anoLancamento) {
+	public Manga(Long id, String nome, String nomeAutor, String capitulo, String descricao, Integer anoLancamento) {
 		this.id = id;
 		this.nome = nome;
 		this.nomeAutor = nomeAutor;
 		this.capitulo = capitulo;
-		this.desc = desc;
+		this.descricao = descricao;
 		this.anoLancamento = anoLancamento;
 	}
 
@@ -70,11 +79,11 @@ public class Manga implements Serializable {
 	}
 	
 	public String getDesc() {
-		return desc;
+		return descricao;
 	}
 	
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDesc(String descricao) {
+		this.descricao = descricao;
 	}
 	
 	public Integer getAnoLancamento() {
